@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto | Juan Pablo Swett Santander</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f4f5f2; --ink:#17202b; --muted:#586271; --rule:#d5d9d2; --accent:#1e5a57; --field:#ffffff; --ok:#1e5a57; --err:#a33a2b; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#12171d; --ink:#e6e9e5; --muted:#9aa3ad; --rule:#2b333c; --accent:#7dbdb3; --field:#182029; --ok:#7dbdb3; --err:#e08a7c; color-scheme: dark; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif; padding:48px max(16px, 6vw); }
+  main { max-width:620px; margin:0 auto; }
+  .name { font-weight:600; margin:0 0 40px; } .name a { color:var(--ink); text-decoration:none; }
+  h1 { font-weight:500; font-size:clamp(1.9rem, 4.5vw, 2.8rem); letter-spacing:-0.03em; line-height:1.08; margin:0 0 16px; }
+  .lede { color:var(--muted); margin:0 0 36px; line-height:1.5; }
+  form { display:grid; gap:18px; }
+  label { display:grid; gap:6px; font-size:0.95rem; font-weight:500; }
+  .opt { color:var(--muted); font-weight:400; }
+  input, textarea { font:inherit; color:var(--ink); background:var(--field); border:1px solid var(--rule); border-radius:6px; padding:11px 12px; width:100%; }
+  textarea { min-height:150px; resize:vertical; }
+  input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .check { display:flex; gap:10px; align-items:flex-start; font-weight:400; color:var(--muted); line-height:1.45; }
+  .check input { width:auto; margin-top:3px; }
+  .trampa { position:absolute; left:-9999px; }
+  button { font:inherit; font-weight:500; background:var(--ink); color:var(--paper); border:0; border-radius:6px; padding:13px 22px; cursor:pointer; justify-self:start; }
+  button:hover { background:var(--accent); color:#fff; } button[disabled] { opacity:.6; cursor:wait; }
+  .estado { min-height:1.5em; margin:0; } .estado.ok { color:var(--ok); } .estado.err { color:var(--err); }
+  a { color:var(--accent); text-underline-offset:0.2em; }
+</style>
+</head>
+<body>
+<main>
+  <p class="name"><a href="/">Juan Pablo Swett Santander</a></p>
+  <h1>Contacto</h1>
+  <p class="lede">Cuénteme brevemente sobre su empresa y qué le preocupa hoy de sus sistemas, su uso de IA o la nube. Respondo en un plazo de dos días hábiles.</p>
+  <form id="form" novalidate>
+    <label for="nombre">Nombre<input id="nombre" name="nombre" autocomplete="name" required maxlength="120"></label>
+    <label for="empresa"><span>Empresa <span class="opt">(opcional)</span></span><input id="empresa" name="empresa" autocomplete="organization" maxlength="160"></label>
+    <label for="correo">Correo<input id="correo" name="correo" type="email" autocomplete="email" required maxlength="160"></label>
+    <label for="mensaje">Mensaje<textarea id="mensaje" name="mensaje" required maxlength="3000"></textarea></label>
+    <label class="trampa" aria-hidden="true">No completar<input name="sitio_web" tabindex="-1" autocomplete="off"></label>
+    <label class="check" for="consentimiento"><input id="consentimiento" name="consentimiento" type="checkbox" required>
+      <span>Acepto que mis datos se usen solo para responder esta consulta, según la <a href="/privacidad.html">política de privacidad</a>.</span></label>
+    <button id="enviar" type="submit">Enviar mensaje</button>
+    <p id="estado" class="estado" role="status" aria-live="polite"></p>
+  </form>
+</main>
+<script>
+  // Pega aquí la URL de la aplicación web de Google Apps Script (termina en /exec).
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyUaTY17Lp9F_t_94UPI_xIbsHauOnUVBtBfJZjn414hTyRhdA1gdgIUMYs87-2w9IB/exec';
+
+  const form = document.getElementById('form');
+  const estado = document.getElementById('estado');
+  const boton = document.getElementById('enviar');
+
+  function mostrar(texto, tipo) { estado.textContent = texto; estado.className = 'estado ' + (tipo || ''); }
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const datos = {
+      nombre: form.nombre.value.trim(),
+      empresa: form.empresa.value.trim(),
+      correo: form.correo.value.trim(),
+      mensaje: form.mensaje.value.trim(),
+      sitio_web: form.sitio_web.value,
+      consentimiento: form.consentimiento.checked
+    };
+    if (!datos.nombre || !datos.correo || !datos.mensaje) return mostrar('Complete nombre, correo y mensaje.', 'err');
+    if (!form.correo.checkValidity()) return mostrar('Revise el correo: no tiene un formato válido.', 'err');
+    if (!datos.consentimiento) return mostrar('Para enviar, acepte la política de privacidad.', 'err');
+
+    boton.disabled = true; mostrar('Enviando…');
+    try {
+      const r = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(datos) });
+      const res = await r.json();
+      if (res.ok) { form.reset(); mostrar('Mensaje enviado. Le responderé dentro de dos días hábiles.', 'ok'); }
+      else mostrar(res.error || 'No se pudo enviar. Intente nuevamente.', 'err');
+    } catch (e) {
+      mostrar('No se pudo enviar. Escriba directamente a contacto@juanpabloswettsantander.cl.', 'err');
+    } finally { boton.disabled = false; }
+  });
+</script>
+</body>
+</html>

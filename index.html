@@ -13,10 +13,12 @@
   :root { --paper:#f4f5f2; --ink:#17202b; --muted:#586271; --rule:#d5d9d2; --accent:#1e5a57; }
   @media (prefers-color-scheme: dark) { :root { --paper:#12171d; --ink:#e6e9e5; --muted:#9aa3ad; --rule:#2b333c; --accent:#7dbdb3; color-scheme: dark; } }
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif;
+  html { height: 100%; }
+  body { margin:0; min-height:100%; background:var(--paper); color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif;
          display:flex; align-items:center; padding:48px max(16px, 6vw); }
-  main { max-width: 720px; }
+  main { width:100%; max-width: 1040px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:48px 64px; align-items:center; }
+  .photo { width:clamp(220px, 26vw, 300px); height:auto; aspect-ratio:4/5; border-radius:12px; object-fit:cover; display:block; border:1px solid var(--rule); }
+  @media (max-width: 760px) { main { grid-template-columns:1fr; } .photo { grid-row:1; width:180px; } }
   .name { font-weight:600; font-size:1rem; margin:0 0 48px; }
   h1 { font-weight:500; font-size:clamp(2rem, 5.5vw, 3.6rem); letter-spacing:-0.035em; line-height:1.05; margin:0; text-wrap:balance; }
   p.lede { color:var(--muted); font-size:clamp(1.05rem, 2vw, 1.25rem); line-height:1.5; margin:24px 0 40px; max-width:46ch; }
@@ -27,6 +29,7 @@
 </head>
 <body>
   <main>
+    <div>
     <p class="name">Juan Pablo Swett Santander</p>
     <h1>IA y cloud gobernados para empresas medianas.</h1>
     <p class="lede">El sitio está en preparación. Mientras tanto, mi trayectoria y publicaciones están en LinkedIn.</p>
@@ -34,6 +37,8 @@
       <a href="https://www.linkedin.com/in/juanpabloswettsantander">LinkedIn</a>
       <a href="https://github.com/JuanPabloSwettSantander">GitHub</a>
     </div>
+    </div>
+    <img class="photo" src="juan-pablo-swett-santander.jpg" alt="Juan Pablo Swett Santander" width="640" height="800">
   </main>
 </body>
 </html>

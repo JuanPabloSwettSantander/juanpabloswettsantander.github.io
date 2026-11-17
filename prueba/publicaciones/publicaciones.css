@@ -27,7 +27,7 @@ a:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
   border-bottom: 1px solid var(--green);
 }
 .brand { display: block; width: min(100%, 248px); flex: none; }
-.brand img { display: block; width: 100%; height: auto; filter: brightness(1.08); mix-blend-mode: multiply; }
+.brand img { display: block; width: 100%; height: auto;  }
 .site-nav { display: flex; flex-wrap: wrap; gap: 14px 24px; }
 .site-nav a { font-size: 14px; text-decoration: none; }
 .site-nav a:hover, .site-nav [aria-current] { text-decoration: underline; }

@@ -117,3 +117,7 @@ h1{font:normal clamp(40px,5.2vw,64px)/1.08 var(--serif)}
 .related h2{font:normal 24px var(--serif)}
 .linkedin-button{padding:13px 23px;font:15px/1.5 Arial,Helvetica,sans-serif}
 .byline{max-width:760px}
+
+/* Listados sin subrayado permanente */
+.entry h2 a,.related a{text-decoration:none}
+.entry h2 a:hover,.related a:hover{text-decoration:underline}

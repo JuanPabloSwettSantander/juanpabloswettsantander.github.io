@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /logo-juan-pablo-swett-santander-encabezado.png
 
 Sitemap: https://juanpabloswettsantander.cl/sitemap.xml

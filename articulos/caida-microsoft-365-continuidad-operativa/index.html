@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>Caída de Microsoft 365: dónde se protege la continuidad operativa</title>
+  <meta name="description" content="La caída de Microsoft 365 del 12 de noviembre no se resuelve volviendo a servidores propios. Tres medidas para que la operación siga cuando falla el proveedor.">
+  <link rel="canonical" href="https://juanpabloswettsantander.cl/articulos/caida-microsoft-365-continuidad-operativa/">
+  <meta name="robots" content="max-image-preview:large">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Caída de Microsoft 365: dónde se protege la continuidad operativa">
+  <meta property="og:description" content="La caída de Microsoft 365 del 12 de noviembre no se resuelve volviendo a servidores propios. Tres medidas para que la operación siga cuando falla el proveedor.">
+  <meta property="og:url" content="https://juanpabloswettsantander.cl/articulos/caida-microsoft-365-continuidad-operativa/">
+  <meta property="og:image" content="https://juanpabloswettsantander.cl/imagenes/compartir-caida-microsoft-365-continuidad-operativa.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../../estilos.css">
+  <script src="../../enlaces-locales.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Caída de Microsoft 365: dónde se protege la continuidad operativa",
+  "description": "La caída de Microsoft 365 del 12 de noviembre no se resuelve volviendo a servidores propios. Tres medidas para que la operación siga cuando falla el proveedor.",
+  "datePublished": "2026-11-16",
+  "image": [
+    "https://juanpabloswettsantander.cl/imagenes/compartir-caida-microsoft-365-continuidad-operativa.png",
+    "https://juanpabloswettsantander.cl/imagenes/juan-pablo-swett-santander-cuadrada.jpg"
+  ],
+  "inLanguage": "es-CL",
+  "mainEntityOfPage": "https://juanpabloswettsantander.cl/articulos/caida-microsoft-365-continuidad-operativa/",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Pablo Swett Santander",
+    "url": "https://juanpabloswettsantander.cl/"
+  },
+  "isBasedOn": "https://www.linkedin.com/feed/update/urn:li:activity:7528156566382911488/"
+}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" data-local-page href="../../">
+        <img src="../../logo-juan-pablo-swett-santander-encabezado.png" alt="Juan Pablo Swett Santander" width="744" height="222">
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a data-local-page href="../../#servicios">Servicios</a>
+        <a data-local-page href="../../#sobre-mi">Sobre mí</a>
+        <a data-local-page href="../" aria-current="location">Artículos</a>
+        <a data-local-page href="../../#contacto">Contacto</a>
+      </nav>
+    </header>
+    <main class="content" id="contenido">
+      <p class="breadcrumb"><a data-local-page href="../../">Inicio</a> / <a data-local-page href="../">Artículos</a> / <a data-local-page href="../tema/nube/">Nube, costos y continuidad</a></p>
+      <article>
+        <header>
+          <p class="eyebrow">Nube, costos y continuidad</p>
+          <h1>Caída de Microsoft 365: dónde se protege la continuidad operativa</h1>
+          <p class="byline">Juan Pablo Swett Santander · <time datetime="2026-11-16">16 de noviembre de 2026</time> · <a href="https://www.linkedin.com/feed/update/urn:li:activity:7528156566382911488/" target="_blank" rel="noopener noreferrer">Ver en LinkedIn</a></p>
+        </header>
+        <div class="article-copy">
+          <p class="article-opening">El jueves 12 de noviembre, Microsoft 365 operó degradado en 74 países durante más de 24 horas. Outlook, Teams, SharePoint y Copilot fallaron de forma intermitente para una base expuesta de más de 450 millones de usuarios empresariales. Como después de cada caída grande, volvió la frase de siempre: “Esto con servidores propios no pasaba”.</p>
+          <p>No es así. Igualar con infraestructura propia la disponibilidad que Microsoft sostiene los otros 364 días del año exige inversión de capital, talento especializado y ciclos de renovación que ningún directorio aprobaría para evitar un evento al año. Replicar todo en otra nube tampoco resiste el análisis: duplica licencias, operación y gobierno de datos, y multiplica la complejidad sin resolver el problema de fondo. Proteger el negocio es asegurar lo vital, no duplicarlo todo.</p>
+          <p class="article-callout">Según lo informado hasta ahora por Microsoft, un control automático diseñado para proteger la disponibilidad sacó servidores de servicio y sobrecargó a los restantes, lo que amplificó el problema. Un sistema automático se equivoca a la misma velocidad con que acierta, y por eso necesita un freno: si intenta retirar más capacidad de la que el negocio estableció como límite, se detiene y escala a una persona.</p>
+          <p>Para quienes lideran tecnología y operaciones, la tarea no es volver a comprar servidores, sino establecer un plan de contingencia interno para mitigar el impacto operativo:</p>
+          <ul>
+            <li>Sacar la operación del correo. Si la logística se detiene porque “no llegó el correo para el despacho”, el problema no es Microsoft, sino el diseño del proceso. Las órdenes de despacho y las aprobaciones tienen que vivir en el ERP o en una plataforma de trabajo que no dependa del mismo inicio de sesión del proveedor, o contar con un modo local para operar sin conexión. Si cae el correo o la nube, el camión sale igual o el material se recibe igual.</li>
+            <li>Un protocolo de comunicación de crisis fuera del ecosistema del proveedor. Esto incluye un canal alternativo definido y probado, accesos de emergencia independientes y excepciones en los procesos que permitan regularizar después sin perder trazabilidad.</li>
+            <li>Probar la contingencia con los equipos operativos. Un plan de respaldo que nunca se ha puesto a prueba sin conexión o sin las herramientas habituales es solo un documento decorativo. Hay que simular estas caídas periódicamente para asegurar que la operación sabe cómo seguir funcionando cuando la tecnología falla.</li>
+          </ul>
+          <p>La continuidad operativa se construye en el diseño de los procesos propios.</p>
+          <a class="linkedin-button" href="../../contacto.html">¿Quiere revisar este tema en su empresa? Solicite una reunión <span aria-hidden="true">→</span></a>
+          <p class="linkedin-secondary"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7528156566382911488/" target="_blank" rel="noopener noreferrer">Comentar en LinkedIn</a></p>
+        </div>
+      </article>
+      <nav class="related" aria-label="Artículos relacionados">
+        <h2>Para seguir leyendo</h2>
+        <ul>
+          <li><a data-local-page href="../migrar-nube-continuidad-operacional/">Cuándo migrar a la nube por continuidad operacional</a></li>
+          <li><a data-local-page href="../justificar-renovacion-infraestructura/">Cómo justificar una renovación de infraestructura con evidencia</a></li>
+          <li><a data-local-page href="../controlar-gasto-nube/">Cómo controlar el gasto en nube antes de que llegue la factura</a></li>
+        </ul>
+      </nav>
+      <a data-local-page href="../">← Volver a artículos</a>
+    </main>
+    <footer>Juan Pablo Swett Santander · Gerente de TI fraccional</footer>
+  </div>
+</body>
+</html>
